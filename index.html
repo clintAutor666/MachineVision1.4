@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Analysis</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="logo/logo.png">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">PIXL/ART</div>
+        <ul class="nav-links">
+            <li><a href="C:\Users\ASUS\Documents\Web-Clint\Editor\PIXL_ART.html">PIXL/ART Editor</a></li>
+            <li><a href="C:\Users\ASUS\Documents\Web-Clint\Shape&Color\index.html">Shape & Color Detections</a></li>
+            <li><a href="C:\Users\ASUS\Documents\Web-Clint\Image Convolution\index.html">Image Convolution</a></li>
+        </ul>
+    </nav>
+
+        <h3>Move Image</h3>
+            <label for="moveX">X Coordinate</label>
+            <input type="number" id="moveX" value="0">
+            <label for="moveY">Y Coordinate</label>
+            <input type="number" id="moveY" value="0">
+            <button onclick="moveImage()" class="button">Move Image</button>
+
+    <div class="container">
+        <h1>PIXL/ART</h1>
+
+        <div class="image-container">
+            <div class="box">
+                <h3>Original Image</h3>
+                <canvas id="originalCanvas"></canvas>
+            </div>
+            <div class="box">
+                <h3>Processed Image</h3>
+                <canvas id="editedCanvas"></canvas>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="second-controls">
+        <h3>Rotation Options</h3>
+        <label for="rotationAngle">Angle (°)</label>
+        <input type="number" id="rotationAngle" min="0" max="360" step="1" value="0">
+        
+        <button onclick="applyRotation()" class="button">Apply Rotation</button>
+    </div>
+    
+        <div class="third-controls">
+            <h3>Mirroring Options</h3>
+            <label for="verticalMirror">Vertical</label>
+            <input type="radio" name="mirror" id="verticalMirror" value="vertical">
+            
+            <label for="horizontalMirror">Horizontal</label>
+            <input type="radio" name="mirror" id="horizontalMirror" value="horizontal">
+            
+            <button onclick="applyMirror()" class="button">Apply Mirror</button>
+        </div>
+    
+<div class="histogram-container">
+    <h2>Color Histograms</h2>
+    <div class="histogram-box">
+        <h3>Red Histogram</h3>
+        <canvas id="histogramRed"></canvas>
+        <p class="histogram-value" id="redValue">Value: 0</p>
+    </div>
+    <div class="histogram-box">
+        <h3>Green Histogram</h3>
+        <canvas id="histogramGreen"></canvas>
+        <p class="histogram-value" id="greenValue">Value: 0</p>
+    </div>
+    <div class="histogram-box">
+        <h3>Blue Histogram</h3>
+        <canvas id="histogramBlue"></canvas>
+        <p class="histogram-value" id="blueValue">Value: 0</p>
+    </div>
+</div>
+
+<div class="projection-container">
+    <h2>Projections</h2>
+    <div class="projection-box">
+        <h3>📐 Vertical Projection</h3>
+        <canvas id="verticalProjectionCanvas" width="400" height="150"></canvas>
+    </div>
+    <div class="projection-box">
+        <h3>📏 Horizontal Projection</h3>
+        <canvas id="horizontalProjectionCanvas" width="400" height="150"></canvas>
+    </div>
+</div>
+
+<div class="containerokie">
+    <label for="imageInput" class="upload-btn">📂 Upload Image</label>
+    <input type="file" id="imageInput" accept="image/*" hidden>
+
+    <button id="save">💾 Save</button>
+    <button onclick="resetImage()" class="button">🔄 Reset Image</button>
+    <button id="toggleButton" onclick="toggleRotationControls()" class="button">🌀 Show Rotation Options</button>
+    <button id="toggleMirroringButton" onclick="toggleMirroringControls()" class="button">🔁 Show Mirroring Options</button>
+</div>
+
+<div class="containerokie2">
+    <button id="generateHistogramButton">📊 Generate Histograms</button>
+    <button id="verticalProjectionButton" onclick="applyVerticalProjection()" class="button">📐 Vertical Projection</button>
+    <button id="horizontalProjectionButton" onclick="applyHorizontalProjection()" class="button">📏 Horizontal Projection</button>
+</div>
+
+<script src="script.js"></script>
+<script>
+    function onOpenCvReady() {
+        console.log('OpenCV.js is ready');
+        // OpenCV is now loaded and ready to use
+    }
+</script>
+<script src="opencv.js" async onload="onOpenCvReady();"></script>
+</body>
+</html>
